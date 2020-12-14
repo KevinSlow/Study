@@ -18,16 +18,23 @@ export const CollapsedMode = () => <Select value={undefined} items={[{title: "Di
 export const UnCollapsedMode = () => <Select items={[{title: "Dimich", value: 1}, {
     title: "Sergey",
     value: 2
-}, {title: "Artem", value: 3}]} onChange={onChangeCallback} value={2}/>;
+}, {title: "Artem", value: 3}]} onChange={onChangeCallback} value={1}/>;
 
 export const ModeChanging = () => {
-    const [parentValue, setParentValue] = useState<number | undefined>(1)
+    const arrayItems = [
+        {title: "Alex", value: '1'},
+        {title: "Andrew", value: '2'},
+        {title: "Valera", value: '3'},
+        {title: "LOL", value: '4'},
+        {title: "LOL", value: '5'},
+        {title: "LOL", value: '6'},]
+
+    let [parentValue, setParentValue] = useState<number | undefined>(undefined)
     const onChangeHandler = (i:any) => {
-        setParentValue(i.value)
+        setParentValue(i)
     }
     return (
         <div>
-            <div>{parentValue}</div>
             <Select value={parentValue} items={[{title: "Dimich", value: 1}, {
                 title: "Sergey",
                 value: 2
@@ -36,3 +43,4 @@ export const ModeChanging = () => {
         </div>
     )
 };
+
