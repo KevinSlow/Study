@@ -4,7 +4,7 @@ import {Select} from "./Select"
 
 
 export default {
-    title: 'Select Story',
+    title: 'MySelect Story',
     component: Select,
 }
 
@@ -43,4 +43,5 @@ export const ModeChanging = () => {
         </div>
     )
 };
+
 
