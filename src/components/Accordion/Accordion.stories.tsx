@@ -28,8 +28,7 @@ export const ModeChanging = () => {
                       collapsed={collapsed}
                       onClick={() => setCollapsed(!collapsed)}
                       items={[{title: "Dimich", value: 1}, {title: "Sergey", value: 2}, {title: "Artem", value: 3}]}
-                      onChange={(value) => {
-                          alert(`user with ID --- ${value} should be happy`)
-                      }}
-    />
+                      onChange={() => {
+                          return <p>This User is happy</p>
+                      }}/>
 };

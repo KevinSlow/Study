@@ -2,12 +2,8 @@ import React, {useState} from "react";
 import {RaringValueType} from "../Rating/Rating";
 
 
-type RatingPropsType = {
-    defaultValue?: RaringValueType,
-    onChange: (value: RaringValueType) => void
-}
 
-export function UncontrolledRating(props: RatingPropsType) {
+export function UncontrolledRating(props: any) {
     console.log("UncontrolledRating")
 
     let [value, setValue] = useState<RaringValueType>(props.defaultValue ? props.defaultValue : 0);
@@ -15,11 +11,11 @@ export function UncontrolledRating(props: RatingPropsType) {
 
     return (
         <div>
-            <Star setValue={()=> {setValue(1); props.onChange(1)}} selected={value > 0} value={1}/>
-            <Star setValue={()=> {setValue(2); props.onChange(2)}} selected={value > 1} value={2}/>
-            <Star setValue={()=> {setValue(3); props.onChange(3)}} selected={value > 2} value={3}/>
-            <Star setValue={()=> {setValue(4); props.onChange(4)}} selected={value > 3} value={4}/>
-            <Star setValue={()=> {setValue(5); props.onChange(5)}} selected={value > 4} value={5}/>
+            <Star setValue={()=> {setValue(1)}} selected={value > 0} value={1}/>
+            <Star setValue={()=> {setValue(2)}} selected={value > 1} value={2}/>
+            <Star setValue={()=> {setValue(3)}} selected={value > 2} value={3}/>
+            <Star setValue={()=> {setValue(4)}} selected={value > 3} value={4}/>
+            <Star setValue={()=> {setValue(5)}} selected={value > 4} value={5}/>
         </div>
     );
 }

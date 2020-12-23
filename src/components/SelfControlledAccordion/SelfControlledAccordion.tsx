@@ -1,47 +1,31 @@
-import React, {useState} from "react";
+import React, {useReducer} from "react";
+import {reducer, TOGGLE_COLLAPSED} from "./reducer";
 
 type AccordionPropsType = {
     titleValue: string,
 }
 
 
+
 export function SelfControlledAccordion(props: AccordionPropsType) {
     console.log("Accordion Rendering");
 
-    let [collapsed,setCollapsed] = useState(false);
+    // let [collapsed,setCollapsed] = useState(false);
+    let [state, dispatch] = useReducer(reducer, {collapsed: true});
 
-        return (
-            <div>
-                <AccordionTitle onClick={()=> (setCollapsed(!collapsed))}  title={props.titleValue}/>
-                {collapsed === true && <AccordionBody/>}
-            </div>
-        );
+    return (
+        <div>
+            {/*<AccordionTitle onClick={()=> (setCollapsed(!collapsed))}  title={props.titleValue}/>*/}
+            <AccordionTitle onClick={() => (dispatch({type: TOGGLE_COLLAPSED}))} title={props.titleValue}/>
+            {!state.collapsed && <AccordionBody/>}
+        </div>
+    );
 }
 
-//
-// function Accordion2(props: AccordionPropsType) {
-//     console.log("Accordion Rendering");
-//     if(props.collapsed === true){
-//         return (
-//             <div>
-//
-//                 <AccordionTitle title={props.titleValue}/>
-//                 <AccordionBody/>
-//             </div>
-//         );
-//     }
-//         return (
-//             <div>
-//                 <AccordionTitle title={props.titleValue}/>
-//             </div>
-//         );
-//
-//
-// }
 
 type AccordionTitlePropsType = {
     title: string,
-    onClick: ()=>void
+    onClick: () => void
 }
 
 
@@ -49,7 +33,9 @@ function AccordionTitle(props: AccordionTitlePropsType) {
     debugger
     console.log("AccordionTitle Rendering");
     return (
-        <h3 onClick={()=> { props.onClick() }}>{props.title}</h3>
+        <h3 onClick={() => {
+            props.onClick()
+        }}>{props.title}</h3>
     );
 }
 

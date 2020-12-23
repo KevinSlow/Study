@@ -5,7 +5,6 @@ import {RaringValueType, Rating} from "./components/Rating/Rating";
 import {OnOff} from "./components/OnOff/OnOff";
 import {SelfControlledAccordion} from './components/SelfControlledAccordion/SelfControlledAccordion';
 import {UncontrolledRating} from "./components/UncontrolledRating/UncontrolledRating";
-import {UncontrolledOnOff} from "./components/UncontrolledOnOff/UncontrolledOnOff";
 
 function App(): any {
     let [ratingValue, setRatingValue] = useState<RaringValueType>(0)
@@ -14,6 +13,13 @@ function App(): any {
     //  полезное
     // JSX возвращаем
     console.log("App Rendering")
+
+    const arr = [
+        {title: "One", value: 123123},
+        {title: "One", value: 123123},
+        {title: "One", value: 123123},
+        {title: "One", value: 123123},
+    ]
     return (
         <div className={"App"}>
             <PageTitle title={"This is App component"}/>
@@ -23,17 +29,13 @@ function App(): any {
             <OnOff onChange={setOn}/> {on.toString()}
 
             {/*<Accordion collapsed={false} titleValue={"Menu"}/>*/}
-            <SelfControlledAccordion titleValue={"Users"}/>
-            <Accordion
-                collapsed={accordionCollapsed}
-                onClick={setAccordionCollapsed}
-                titleValue={"Users123"}
-            />
+            <SelfControlledAccordion titleValue={"Users123"}/>
 
 
 
-            {/*<UncontrolledRating/>*/}
-            {/*<Accordion titleValue={"Menu"} collapsed={true}/>*/}
+
+            <UncontrolledRating/>
+            <Accordion titleValue={"Menu11"}  items={arr} collapsed={accordionCollapsed} onChange={()=> {setAccordionCollapsed(!accordionCollapsed)}} onClick={setAccordionCollapsed}/>
 
             {/*<Rating value={0}/>*/}
             {/*<Rating value={1}/>*/}
