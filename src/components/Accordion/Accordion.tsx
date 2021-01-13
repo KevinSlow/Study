@@ -13,7 +13,8 @@ type AccordionPropsType = {
     onClick: (value: any) => void
 };
 
-export function Accordion(props: AccordionPropsType) {
+export const Accordion = React.memo(AccordionFirst)
+function AccordionFirst(props: AccordionPropsType) {
     console.log("Accordion rendering");
     return (
         <div>

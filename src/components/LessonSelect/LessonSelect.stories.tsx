@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {action} from "@storybook/addon-actions";
 import {Select} from "./LessonSelect"
 
 
@@ -9,7 +8,7 @@ export default {
 }
 
 
-export const withoutValue = () => {
+export const withoutValueMemo = () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [value, setValue] = useState(null);
    return <>
@@ -24,7 +23,12 @@ export const withoutValue = () => {
     </>
 }
 
-export const withValue = () => {
+
+export const withValueOne = () => {
+    const arr = [{value: "1", title: "Minsk"},
+        {value: "2", title: "Kiev"},
+        {value: "3", title: "Moscow"}
+    ]
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [value, setValue] = useState("1");
 
@@ -32,10 +36,9 @@ export const withValue = () => {
         <Select
             onChange={setValue}
             value={value}
-            items={[{value: "1", title: "Minsk"},
-                {value: "2", title: "Kiev"},
-                {value: "3", title: "Moscow"}
-            ]}
+            items={arr}
         />
     </>
 }
+const withoutValue = React.memo(withoutValueMemo)
+const withValue = React.memo(withValueOne)

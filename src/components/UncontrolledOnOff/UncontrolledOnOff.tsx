@@ -9,12 +9,8 @@ type OnOffPropsType = {
 
 
 
-export function UncontrolledOnOff(props:OnOffPropsType) {
+export function UncontrolledOnOffMemo(props:OnOffPropsType) {
     console.log("UncontrolledOnOff Rendering");
-
-
-
-
     console.log("On:" + props.on)
     const onStyle = {
         width: "30px",
@@ -53,6 +49,8 @@ export function UncontrolledOnOff(props:OnOffPropsType) {
         </div>
     );
 }
+export const UncontrolledOnOff = React.memo(UncontrolledOnOffMemo)
+
 //
 // function On() {
 //     return(

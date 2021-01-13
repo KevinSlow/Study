@@ -12,12 +12,15 @@ export default {
 
 const Template: Story<PageProps> = (args) => <Page {...args} />;
 
-export const LoggedIn = Template.bind({});
-LoggedIn.args = {
+const LoggedInMemo = Template.bind({});
+LoggedInMemo.args = {
   ...HeaderStories.LoggedIn.args,
 };
 
-export const LoggedOut = Template.bind({});
-LoggedOut.args = {
+const LoggedOutMemo = Template.bind({});
+LoggedOutMemo.args = {
   ...HeaderStories.LoggedOut.args,
 };
+export const LoggedIn = React.memo(LoggedInMemo)
+export const LoggedOut = React.memo(LoggedOutMemo)
+

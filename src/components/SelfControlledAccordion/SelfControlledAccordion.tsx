@@ -7,7 +7,7 @@ type AccordionPropsType = {
 
 
 
-export function SelfControlledAccordion(props: AccordionPropsType) {
+function SelfControlledAccordionMemo(props: AccordionPropsType) {
     console.log("Accordion Rendering");
 
     // let [collapsed,setCollapsed] = useState(false);
@@ -21,6 +21,7 @@ export function SelfControlledAccordion(props: AccordionPropsType) {
         </div>
     );
 }
+export const SelfControlledAccordion = React.memo(SelfControlledAccordionMemo)
 
 
 type AccordionTitlePropsType = {

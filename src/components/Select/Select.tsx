@@ -12,7 +12,9 @@ type SelectPropsType = {
     items: ItemType[]
 }
 
-export class Select extends React.Component<any,any> {
+
+
+class SelectMemo extends React.Component<any,any> {
 
     constructor(props:any) {
         super(props);
@@ -84,4 +86,4 @@ export class Select extends React.Component<any,any> {
     }
 }
 
-
+export const Select = React.memo(SelectMemo)

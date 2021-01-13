@@ -17,7 +17,9 @@ const callback = action("on or off changed")
 export const ActiveMode = () => <UncontrolledOnOff on={true} setOn={callback} />
 export const NonActiveMode = () => <UncontrolledOnOff on={false} setOn={callback} />
 
-export const ModeChanging = () => {
+export const ModeChangingMemo = () => {
     const [value, setValue] = useState<boolean>(true);
     return <UncontrolledOnOff on={value} setOn={setValue} />
 };
+
+export const ModeChanging = React.memo(ModeChangingMemo)

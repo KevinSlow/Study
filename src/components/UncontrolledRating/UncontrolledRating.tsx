@@ -3,7 +3,7 @@ import {RaringValueType} from "../Rating/Rating";
 
 
 
-export function UncontrolledRating(props: any) {
+export function UncontrolledRatingMemo(props: any) {
     console.log("UncontrolledRating")
 
     let [value, setValue] = useState<RaringValueType>(props.defaultValue ? props.defaultValue : 0);
@@ -19,7 +19,7 @@ export function UncontrolledRating(props: any) {
         </div>
     );
 }
-
+export const UncontrolledRating = React.memo(UncontrolledRatingMemo)
 type StarPropsType = {
     selected: boolean,
     setValue: (value: 1 | 2 | 3 | 4 | 5) => void,

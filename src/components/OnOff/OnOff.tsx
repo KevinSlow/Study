@@ -8,8 +8,9 @@ type OnOffPropsType = {
 }
 
 
+export const OnOff = React.memo(OnOffMemo)
 
-export function OnOff(props:OnOffPropsType) {
+export function OnOffMemo(props:OnOffPropsType) {
     console.log("UncontrolledOnOff Rendering")
 
     let [on, setOn] = useState(props.on ? props.on : false);

@@ -6,10 +6,9 @@ test("reducer should throw an error because action type is incorrect", () => {
         collapsed: true
     }
     //action
-    expect(() => reducer(state,
-        {type: "FAKE"}))
+    expect((collapsed:boolean) => reducer(state, {type: "FAKE"}))
         .toThrowError()
     //expectation
-    expect(newState.collapsed).toBe(false)
+    expect(state.collapsed).toBe(false)
 })
 

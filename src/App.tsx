@@ -6,7 +6,8 @@ import {OnOff} from "./components/OnOff/OnOff";
 import {SelfControlledAccordion} from './components/SelfControlledAccordion/SelfControlledAccordion';
 import {UncontrolledRating} from "./components/UncontrolledRating/UncontrolledRating";
 
-function App(): any {
+
+function AppMemo(): any {
     let [ratingValue, setRatingValue] = useState<RaringValueType>(0)
     let [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(false)
     let [on, setOn] = useState<boolean>(false);
@@ -67,4 +68,4 @@ function sum(a: number, b: number) { // потому что с маленько�
 // sum(23,12);
 // sum(223,1122);
 
-export default App;
+export default React.memo(AppMemo);
