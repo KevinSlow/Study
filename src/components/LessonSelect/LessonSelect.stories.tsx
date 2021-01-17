@@ -11,6 +11,7 @@ export default {
 export const withoutValueMemo = () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [value, setValue] = useState(null);
+
    return <>
         <Select
             onChange={setValue}

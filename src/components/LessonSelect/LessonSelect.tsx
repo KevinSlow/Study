@@ -2,15 +2,12 @@ import React, {useEffect, useState} from "react";
 import s from "./Select.module.css"
 
 
-type ItemType = {
-    title: string,
-    value?: any
-}
+type ItemType = { countryID: string; value: string; title: string; country: string; }[]
 
 type SelectPropsType = {
     value: any,
     onChange: (value: any) => void
-    items: ItemType[]
+    items: ItemType
 }
 
 
