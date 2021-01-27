@@ -1,33 +1,67 @@
-import React, {useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 
 
 export default {
-    title: "React.Memo"
+    title: "useState Demo"
 }
 
-const NewMessagesCounter = (props: { count: number }) => {
-    return <div>{props.count}</div>
+function generateData() {
+    //difficult counting
+    console.log("Difficult")
+    return 1;
 }
-type usersType = { users: Array<string> }
-const UsersSecret = (props: { users: Array<string> }) => {
-    return <div>
-        {props.users.map((u, i) => <div key={i}>{u}</div>)}
-    </div>
-}
-
-const Users = React.memo(UsersSecret)
 
 export const Example = () => {
-    const [counter, setCounter] = useState(0)
-    const [users, setUsers] = useState(["Sergey", "Alex", "Artem"])
-    const addUser = () => {
-        const newUsers = [...users,"Sveta" + new Date().getTime() ]
-        setUsers(newUsers)
-    }
+    console.log("Example1")
+    // const initValue = useMemo(generateData,[])
+    const [fake, setFake] = useState(1)
+    const [counter, setCounter] = useState(generateData)
+
+    useEffect(() => {
+        console.log("UseEffect every render");
+        document.title = counter.toString()
+    })
+    useEffect(() => {
+        console.log("UseEffect only first render(ComponentDidMount)");
+        document.title = counter.toString()
+    }, [])
+    useEffect(() => {
+        console.log("UseEffect first render and every counter change");
+        document.title = counter.toString()
+    }, [counter])
+
+
     return <>
-        <button onClick={() => setCounter(counter + 1 )}>+</button>
-        <button onClick={addUser}>Add User</button>
-        <NewMessagesCounter count={counter}/>
-        <Users users={users}/>
+        Hello there,
+        <button onClick={() => setFake(fake + 1)}>fake+</button>
+        <button onClick={() => setCounter(counter + 1)}>counter+</button>
+        {counter}{fake}
+    </>
+}
+export const SetTimeoutExample = () => {
+    console.log("Example1")
+    // const initValue = useMemo(generateData,[])
+    const [fake, setFake] = useState(1)
+    const [counter, setCounter] = useState(generateData)
+
+    // useEffect(() => {
+    //     console.log("UseEffect every render");
+    //     document.title = counter.toString()
+    // })
+    useEffect(() => {
+        setInterval(() => {
+            console.log("setTimeout")
+
+            const seconds = new Date().getSeconds()
+            setCounter(seconds  + 1);
+        }, 1000)
+    }, [])
+    const hours = new Date().getHours()
+    const minutes = new Date().getMinutes()
+    return <>
+        Hello counter, {hours}:{minutes}:{counter} - fake: {fake}
+        {/*<button onClick={() => setFake(fake + 1)}>fake+</button>*/}
+        {/*<button onClick={() => setCounter(counter + 1)}>counter+</button>*/}
+        {counter}{fake}
     </>
 }
